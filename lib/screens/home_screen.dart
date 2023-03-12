@@ -24,7 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Newsify'),
+        centerTitle: true,
+        elevation: 0,
+        title: const Text(
+          'Newsify',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Center(
         child: FutureBuilder<List<NewsArticle>>(
@@ -41,9 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       imageUrl: article.imageUrl ?? '',
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      errorWidget: (context, url, error) => Image.network(
+                        'https://www.globalsign.com/application/files/9516/0389/3750/What_Is_an_SSL_Common_Name_Mismatch_Error_-_Blog_Image.jpg',
+                      ),
                     ),
                     title: Text(article.title),
+                    subtitle: Text(article.description ?? ''),
                     onTap: () {
                       Navigator.push(
                         context,

@@ -10,7 +10,7 @@ class API {
 
   Future<List<NewsArticle>> fetchArticles() async {
     final response = await http
-        .get(Uri.parse('$_baseUrl/top-headlines?country=in&apiKey=$_apiKey'));
+        .get(Uri.parse('$_baseUrl/everything?q=technology&apiKey=$_apiKey'));
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final List<dynamic> articleListJson = json['articles'];
